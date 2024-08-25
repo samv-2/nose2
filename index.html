@@ -1,1 +1,151 @@
-<h1>Github pages test</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meper donas nic?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSw3iIWg0afAUYw4WHGFvc5yTc_hKxdQ9oQSDDoAI9a0ArXKPXq');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            overflow: hidden;  /* Para evitar scrollbars */
+            position: relative;
+            transition: background-image 0.5s ease;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0);  /* Fondo completamente transparente */
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            z-index: 10; /* Para que esté por encima de las estrellitas */
+        }
+        h1 {
+            color: #dda0dd;  /* Color morado claro */
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #yesBtn {
+            background-color: #28a745;
+            color: white;
+        }
+        #noBtn {
+            background-color: #dc3545;
+            color: white;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        iframe {
+            display: none; /* Oculta el iframe */
+        }
+
+        /* Estilo para las estrellitas */
+        .star {
+            width: 5px;
+            height: 5px;
+            background: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            animation: moveStar 10s linear infinite;
+        }
+
+        /* Animación de las estrellitas */
+        @keyframes moveStar {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Meper d0nas Nic?</h1>
+        <div class="buttons">
+            <button id="yesBtn">Sí</button>
+            <button id="noBtn">No</button>
+        </div>
+        <p id="message"></p>
+    </div>
+
+    <!-- Agregar un iframe para reproducir la canción en bucle -->
+    <iframe 
+        width="0" 
+        height="0" 
+        src="https://www.youtube.com/embed/ZXNyFoO90qo?autoplay=1&loop=1&playlist=ZXNyFoO90qo" 
+        frameborder="0" 
+        allow="autoplay" 
+        allowfullscreen>
+    </iframe>
+
+    <!-- Agregar estrellitas -->
+    <script>
+        // Crear estrellitas
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.transform = `scale(${Math.random()})`;
+            star.style.animationDuration = Math.random() * 10 + 5 + 's';
+            document.body.appendChild(star);
+        }
+
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const message = document.getElementById('message');
+        const phrases = ["porfis", "porfas", "dale", "no seas malita"];
+
+        yesBtn.addEventListener('click', () => {
+            message.textContent = 'Grax, tikiero mucho :D';
+            message.style.fontSize = '40px';
+            message.style.color = '#800080';  // Color morado
+            message.style.visibility = 'visible';
+
+            // Cambiar la imagen de fondo a mosaico
+            document.body.style.backgroundImage = "url('https://ih1.redbubble.net/image.2797736010.4808/flat,750x,075,f-pad,750x1000,f8f8f8.jpg')";
+            document.body.style.backgroundSize = '150px';  // Tamaño del mosaico
+            document.body.style.backgroundRepeat = 'repeat';  // Repetir la imagen
+        });
+
+        noBtn.addEventListener('click', () => {
+            let currentSize = parseInt(yesBtn.style.fontSize) || 16;
+            yesBtn.style.fontSize = currentSize + 2 + 'px';
+
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            message.textContent = randomPhrase;
+            message.style.visibility = 'visible';
+        });
+    </script>
+</body>
+</html>
